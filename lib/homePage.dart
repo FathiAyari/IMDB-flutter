@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 
 class HomePage extends StatefulWidget {
@@ -10,6 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  callImdbApi()async{
+
+    var url = Uri.parse('https://www.omdbapi.com/?t=joker&apikey=9604cb6f ');
+    var response = await http.get(url);
+    print(response.body);
+  }
   @override
   Widget build(BuildContext context) {
     return
@@ -72,13 +80,14 @@ Scaffold(
             ),
             Container(
               height: 50,
-              child: ElevatedButton.icon(onPressed: (){},
+              child: ElevatedButton.icon(onPressed: (){
+                callImdbApi();
+              },
 
                 style: ElevatedButton.styleFrom(
                   primary: Colors.amber,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
-
 
                     /*style: ButtonStyle(
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
