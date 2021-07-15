@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+var searchController =TextEditingController(); //get the content of the text field
   callImdbApi()async{
 
     var url = Uri.parse('https://www.omdbapi.com/?t=joker&apikey=9604cb6f ');
@@ -53,6 +53,7 @@ Scaffold(
         Row(
           children: [
             Expanded(child: TextFormField(
+              controller:searchController ,
 
             decoration:InputDecoration(
 
