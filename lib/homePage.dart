@@ -22,10 +22,14 @@ var searchController =TextEditingController(); //get the content of the text fie
     var url = Uri.parse('https://www.omdbapi.com/?t=${searchController.text}&apikey=9604cb6f '); //concatunation of the searchController with the api
     var response = await http.get(url);
     var mybody=jsonDecode(response.body);
+    print(mybody['Genre']);
 
     Navigator.pushNamed(context, '/movieDetails',arguments: {
     "Poster" :mybody['Poster'],
-      "title" :mybody['Title'],
+      "Title" :mybody['Title'],
+      "imdbRating" :mybody['imdbRating'],
+      "Genre" :mybody['Genre'],
+      "Released" :mybody['Released'],
 
     });
 
