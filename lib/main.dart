@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imdb/homePage.dart';
+import 'package:imdb/moviePage.dart';
 void main() {
   runApp(MyApp());
 }
@@ -17,7 +18,11 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,*/
 
       ),
-      home: HomePage(),
+
+      routes: {
+        '/': (context) =>HomePage(),
+        '/movieDetails' : (context) =>moviePage(),
+      },
 
 
     );

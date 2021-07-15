@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,12 +14,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 var searchController =TextEditingController(); //get the content of the text field
-  callImdbApi()async{
 
-    var url = Uri.parse('https://www.omdbapi.com/?t=joker&apikey=9604cb6f ');
+
+
+        callImdbApi()async{
+
+    var url = Uri.parse('https://www.omdbapi.com/?t=${searchController.text}&apikey=9604cb6f '); //concatunation of the searchController with the api
     var response = await http.get(url);
-    print(response.body);
-  }
+    var mybody=jsonDecode(response.body);
+
+    Navigator.pushNamed(context, '/movieDetails',arguments: {
+    "Poster" :mybody['Poster'],
+      "title" :mybody['Title'],
+
+    });
+
+
+        }
   @override
   Widget build(BuildContext context) {
     return
@@ -52,10 +65,16 @@ Scaffold(
         ),
         Row(
           children: [
-            Expanded(child: TextFormField(
+            Expanded(
+
+                child: TextFormField(style: TextStyle(
+                  color: Colors.white,// change the color of the content value of the textfield
+                ),
+
               controller:searchController ,
 
             decoration:InputDecoration(
+
 
               hintText: 'Movie name', //Plceholder
               hintStyle: TextStyle(
@@ -65,6 +84,7 @@ Scaffold(
               ),
               fillColor: Color(0xFF2a2b37),// the color of the inside box field
               filled: true,
+
 
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(20) //borderradius
@@ -83,6 +103,8 @@ Scaffold(
               height: 50,
               child: ElevatedButton.icon(onPressed: (){
                 callImdbApi();
+
+                Navigator.pushNamed(context, '/moviedetails');
               },
 
                 style: ElevatedButton.styleFrom(
