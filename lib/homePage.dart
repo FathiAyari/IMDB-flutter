@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _formKey = GlobalKey<FormState>();
 var searchController =TextEditingController(); //get the content of the text field
 
 
@@ -69,46 +70,62 @@ Scaffold(
         ),
         Row(
           children: [
-            Expanded(
+            Form(
+              key: _formKey,
 
-                child: TextFormField(style: TextStyle(
-                  color: Colors.white,// change the color of the content value of the textfield
+              child: Expanded(
+
+
+                  child: TextFormField(style: TextStyle(
+                    color: Colors.white,// change the color of the content value of the textfield
+                  ),
+
+                controller:searchController ,
+
+              decoration:InputDecoration(
+
+
+                hintText: 'Movie name', //Plceholder
+                hintStyle: TextStyle(
+                  color: Colors.grey,// the color of hintText
+                  fontSize: 18
+
                 ),
-
-              controller:searchController ,
-
-            decoration:InputDecoration(
+                fillColor: Color(0xFF2a2b37),// the color of the inside box field
+                filled: true,
 
 
-              hintText: 'Movie name', //Plceholder
-              hintStyle: TextStyle(
-                color: Colors.grey,// the color of hintText
-                fontSize: 18
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20) //borderradius
+                )
+
+
+
 
               ),
-              fillColor: Color(0xFF2a2b37),// the color of the inside box field
-              filled: true,
+                      validator:(value){
+                    if(value.isEmpty){ // validation function
 
+                      return ' Field cant be empty  ';
+                    }else return null;
 
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20) //borderradius
-              )
-
-
-
-
+                      }
+                )),
             ),
-
-              )),
             SizedBox(
               width: 10,
             ),
             Container(
               height: 50,
               child: ElevatedButton.icon(onPressed: (){
-                callImdbApi();
+                if(_formKey.currentState.validate()){
+                  callImdbApi();
 
-                Navigator.pushNamed(context, '/moviedetails');
+                  Navigator.pushNamed(context, '/moviedetails');
+
+
+                }
+
               },
 
                 style: ElevatedButton.styleFrom(
@@ -132,6 +149,8 @@ Scaffold(
             SizedBox(
               width: 10,
             ),
+
+
           ],
         )
       ],

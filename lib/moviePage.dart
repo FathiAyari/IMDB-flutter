@@ -76,7 +76,7 @@ class _moviePageState extends State<moviePage> {
               fontSize: 20,
               color: Colors.white,
             ),),
-          Text('Realesed : '+Released.toString(),
+          Text('Realesed : '+Released .toString(),
 
             style: TextStyle(
               fontSize: 20,
