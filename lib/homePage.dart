@@ -43,21 +43,29 @@ Scaffold(
       ),
       Row(
         children: [
-          Expanded(child: TextFormField(style:
-            TextStyle(
-            color: Colors.white,
-            fontSize: 17,
-          ),
+          Expanded(child: TextFormField(
+
           decoration:InputDecoration(
-            hintText: 'Movie name',
+
+            hintText: 'Movie name', //Plceholder
             hintStyle: TextStyle(
-              color: Colors.grey,
+              color: Colors.grey,// the color of hintText
+              fontSize: 18
+
             ),
+            fillColor: Color(0xFF2a2b37),// the color of the inside box field
+            filled: true,
+
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20)
+            )
 
 
 
-          )
-            ,))
+
+          ),
+
+            ))
         ],
       )
     ],
