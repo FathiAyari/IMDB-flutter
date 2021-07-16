@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imdb/homePage.dart';
 import 'package:imdb/moviePage.dart';
+import 'package:imdb/noConnexion.dart';
 void main() {
   runApp(MyApp());
 }
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) =>HomePage(),
         '/movieDetails' : (context) =>moviePage(),
+        '/noConnexion' : (context) => noConnexion(),
       },
 
 

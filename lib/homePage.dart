@@ -18,12 +18,12 @@ var searchController =TextEditingController(); //get the content of the text fie
 
 
 
-        callImdbApi()async{
+    callImdbApi()async{
 
     var url = Uri.parse('https://www.omdbapi.com/?t=${searchController.text}&apikey=9604cb6f '); //concatunation of the searchController with the api
     var response = await http.get(url);
     var mybody=jsonDecode(response.body);
-    print(mybody['Genre']);
+    searchController.clear();// clear the value of the field after clicking the search button
 
     Navigator.pushNamed(context, '/movieDetails',arguments: {
     "Poster" :mybody['Poster'],
@@ -32,7 +32,8 @@ var searchController =TextEditingController(); //get the content of the text fie
       "Genre" :mybody['Genre'],
       "Released" :mybody['Released'],
 
-    });
+    },
+        );
 
 
         }
@@ -52,7 +53,7 @@ Scaffold(
           child :Image.network('https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png'),
           width: 200,
           height: 180,
-         /* child: Image.network('https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png',)*/
+
 
         ),
         SizedBox(
@@ -121,10 +122,12 @@ Scaffold(
                 if(_formKey.currentState.validate()){
                   callImdbApi();
 
-                  Navigator.pushNamed(context, '/moviedetails');
 
 
-                }
+
+
+                };
+
 
               },
 

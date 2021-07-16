@@ -9,6 +9,7 @@ class moviePage extends StatefulWidget {
 }
 
 class _moviePageState extends State<moviePage> {
+
   @override
   Widget build(BuildContext context) {
     Map arguments =ModalRoute.of(context).settings.arguments;
@@ -17,73 +18,76 @@ class _moviePageState extends State<moviePage> {
     String imdbRating = arguments['imdbRating'];
     String Genre = arguments['Genre'];
     String Released = arguments['Released'];
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(backgroundColor: Color(0xFF21222E)),
       backgroundColor: Color(0xFF21222E),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
-          SizedBox(
-            height: 140,
-          ),
-          Container(
+            SizedBox(
+              height: 110,
+            ),
+            Container(
 
-            height: 300,
-            width: double.infinity  ,// take the whole space in width
-            child: FittedBox( fit: BoxFit.cover ,
+              height: 300,
+              width: double.infinity  ,// take the whole space in width
+              child: FittedBox( fit: BoxFit.cover ,
 
 
-                // use the fitted box for the adjustement
-                child: Image.network(Poster),
+                  // use the fitted box for the adjustement
+                  child: Image.network(Poster),
 
+
+              ),
+            ),
+
+            SizedBox(
+              height: 140,
+            ),
+            Text(Title,
+
+              style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+            ),),
+            Row(
+              children: [
+                Icon(Icons.star,
+                color: Colors.amber,
+                size:30),
+
+                Text(' '+imdbRating.toString(),
+
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),),
+
+
+
+
+              ],
 
             ),
-          ),
 
-          SizedBox(
-            height: 140,
-          ),
-          Text(Title,
+            Text('Genre : '+Genre.toString(),
 
-            style: TextStyle(
-            fontSize: 30,
-            color: Colors.white,
-          ),),
-          Row(
-            children: [
-              Icon(Icons.star,
-              color: Colors.amber,
-              size:30),
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),),
+            Text('Realesed : '+Released .toString(),
 
-              Text(' '+imdbRating.toString(),
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),),
 
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),),
-
-
-
-
-            ],
-
-          ),
-
-          Text('Genre : '+Genre.toString(),
-
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),),
-          Text('Realesed : '+Released .toString(),
-
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),),
-
-        ],
+          ],
+        ),
       ),
     );
   }
