@@ -158,11 +158,11 @@ Scaffold(
           ],
         ),
 
-        SizedBox(
+        /*SizedBox(
           height: 270,
         ),
-
-        Row(
+*/
+      /*  Row(
 
 
           mainAxisAlignment: MainAxisAlignment.center, // Center Row contents horizontally,
@@ -182,7 +182,50 @@ Scaffold(
               ) ,)
 
           ],
-        )
+        ),*/
+    Container(
+      height: 280,
+      width: 400,
+      child: Stack(
+        children: [
+
+
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Icon(
+                    Icons.copyright,
+                    color: Colors.white,
+                  ),
+
+
+                  Container(
+                    width: 200,
+                    height: 20,
+
+                    alignment: Alignment.bottomCenter,
+                    child: Text('Created by Fathi AYARI ',
+
+                      style:TextStyle(
+                        fontSize: 15,
+                        color: Colors.white,
+
+                      ) ,)
+                  ),
+
+
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    )
 
 
 
