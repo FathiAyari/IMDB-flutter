@@ -18,6 +18,7 @@ class _moviePageState extends State<moviePage> {
     String imdbRating = arguments['imdbRating'];
     String Genre = arguments['Genre'];
     String Released = arguments['Released'];
+    String Country = arguments['Country'];
 
     return Scaffold(
       appBar: AppBar(backgroundColor: Color(0xFF21222E)),
@@ -80,6 +81,13 @@ class _moviePageState extends State<moviePage> {
                 color: Colors.white,
               ),),
             Text('Realesed : '+Released .toString(),
+
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),),
+
+            Text('Country : '+Country .toString(),
 
               style: TextStyle(
                 fontSize: 20,

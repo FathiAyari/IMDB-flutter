@@ -31,6 +31,7 @@ var searchController =TextEditingController(); //get the content of the text fie
       "imdbRating" :mybody['imdbRating'],
       "Genre" :mybody['Genre'],
       "Released" :mybody['Released'],
+      "Country" :mybody['Country'],
 
     },
         );
@@ -50,7 +51,7 @@ Scaffold(
           height: 100 ,
         ),
         Container(
-          child :Image.network('https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo._CB410901634_.png'),
+          child :Image.asset('assets/images/imdb.png'),
           width: 200,
           height: 180,
 
@@ -155,7 +156,36 @@ Scaffold(
 
 
           ],
+        ),
+
+        SizedBox(
+          height: 270,
+        ),
+
+        Row(
+
+
+          mainAxisAlignment: MainAxisAlignment.center, // Center Row contents horizontally,
+
+          children: [
+
+            Icon(
+              Icons.copyright,
+              color: Colors.white,
+            ),
+            Text('Created by Fathi AYARI ',
+
+              style:TextStyle(
+                fontSize: 15,
+                color: Colors.white,
+
+              ) ,)
+
+          ],
         )
+
+
+
       ],
     ),
   ),
@@ -175,3 +205,13 @@ Scaffold(
             ),),
         ),
       );*/
+
+
+
+
+
+
+
+
+
+
