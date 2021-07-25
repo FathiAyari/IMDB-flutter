@@ -25,29 +25,26 @@ class _moviePageState extends State<moviePage> {
       backgroundColor: Color(0xFF21222E),
       body: SingleChildScrollView(
         child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
-            SizedBox(
-              height: 110,
-            ),
-            Container(
 
-              height: 300,
-              width: double.infinity  ,// take the whole space in width
-              child: FittedBox( fit: BoxFit.cover ,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Container(
+                  height: MediaQuery.of(context).size.height *0.5,
 
 
-                  // use the fitted box for the adjustement
-                  child: Image.network(Poster),
-
-
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Image.network(Poster,
+                      fit: BoxFit.cover ,),
+                  )
               ),
             ),
 
-            SizedBox(
-              height: 140,
-            ),
+
             Text(Title,
 
               style: TextStyle(
